@@ -1,21 +1,7 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -pthread
+all: ex3.out
 
-SRC = main.c buffers.c actors.c
-OBJ = $(SRC:.c=.o)
-
-TARGET = ex3.out
-
-all: $(TARGET)
-
-$(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+ex3.out: mymain.c
+	gcc mymain.c -o ex3.out -pthread -lrt
 
 clean:
-	rm -f $(OBJ) $(TARGET)
-
-
-
+	rm -f ex3.out
